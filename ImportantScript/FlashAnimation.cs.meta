@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2d8b34524dee8814ebcbb25b1ff9aeb3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spirteRender: {instanceID: 0}
+  - flashRender: {fileID: 2100000, guid: 21b08e0fb83f3b646ab6fa1a20113d41, type: 2}
+  - enemyMeshRender: {instanceID: 0}
+  - enemyMeshRend: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
