@@ -1,0 +1,21 @@
+#Mike Quinn Notes
+
+Okay so I only evaluated the code, outside of Unity because they were moved outside the project so I didn't get to see it in action.
+It does seem like you are learning, but you are using some cool methods like delegates and the singleton pattern. 
+
+When you go through my comments, you are going to notice some themes,
+1. You need to start using namespaces. They should be the first thing you do when making a new script.
+2. You need to figure out a new system for grabbing references. You can't use Find statements for everything because that won't scale with your projects
+	By that, I mean that as your projects get bigger, the resource hit will grow as well for every call and that isn't sustainable.
+3. Although you aren't following the Microsoft naming conventions, you are consistent which is always great
+
+There were some small nitpicking on the code, some lines could have been shortened and you 100% never need to do a GetComponenet call on Transform.
+Other than that I'd say you are in a good spot to keep growing. From your code it looks to me like you have an understanding of programming beyond what a normal
+beginner would have but you need more practice working with Unity.
+
+Good luck on your future development.
+
+Feel free to reach out:
+Email - Contact@MikeQ.dev
+LinkedIn - https://www.linkedin.com/in/michael-quinn-a3634a165/
+Unity Article Publication - https://medium.com/unity-coder-corner
