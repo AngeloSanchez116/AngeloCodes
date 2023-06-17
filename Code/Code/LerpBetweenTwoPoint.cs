@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//use a namespace
 public class LerpBetweenTwoPoint : MonoBehaviour
 {
     
+    //lowercase `f`
     public float speed = 1.0F;
     public float distCovered;
     public float journeyLength;
@@ -22,6 +24,7 @@ public class LerpBetweenTwoPoint : MonoBehaviour
     void Start()
     {
         //startTime = Time.time;
+        //use Camera.main.transform
         camTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
 
@@ -30,6 +33,18 @@ public class LerpBetweenTwoPoint : MonoBehaviour
         //start the lerp
         if (startlerp == true)
         {
+            //Look up different examples of Lerp. I see what you are doing but this is a confusing way to do it.
+            //You shouldn't be increasing "speed"
+            /*
+             A LERP is takes in two values and gives you the proportion between them based on a normalized value
+            I know that sounds confusing but imagine the start is 0 and the end is 10. You give LERP a "step" which is a value between 0 and 1
+            0 = the starting value, 1 = the end value | so Lerp(startingValue, endValue, step);
+            Lerp(0, 10, 0.5) = 5
+            Lerp(0, 10, 0) = 0
+            Lerp(0, 10, 1) = 10
+            So don't look at the step as a speed, it is a normalized value between 0 and 1 that returns the proportion of the start and end number
+            */
+
             //Makes sure the next position doesnt value doesnt exced the value of the list
             if (nextPosition < endMarker.Count) {
                 distCovered += (Time.deltaTime - startTime) * speed;// the speed at which it travels
@@ -54,7 +69,7 @@ public class LerpBetweenTwoPoint : MonoBehaviour
     }
     //Sets up the Lerp 
     private void setuplerp() {
-
+        //good null check
         if (secondPath != null)
         {
             secondPath.SetActive(false);
