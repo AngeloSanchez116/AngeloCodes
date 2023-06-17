@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+//use a namespace
 public class ResetPlayerAfterDeath : MonoBehaviour
 {
     private Transform player;
@@ -19,12 +20,15 @@ public class ResetPlayerAfterDeath : MonoBehaviour
     [SerializeField]
     private float resettimer = 0;
 
+    //You don't need to, but switching to an Action is easier to read
     public delegate void Levelreset();
     public static event Levelreset OnLevelReset;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Do anything you can to get rid of these Find statements
+        //A Find statment is not reliable and goes through every single object in the scene before returning the first hit
         if (FindObjectOfType<BossScript>() != null)  
         {
           boss = GameObject.FindGameObjectWithTag("Boss").GetComponentInChildren<BossScript>();
@@ -52,8 +56,11 @@ public class ResetPlayerAfterDeath : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Don't do this in FixedUpdate
+        //FixedUpdate is for physics calls and you don't need this here
         time -=Time.deltaTime;
 
+        //This is pretty cool asignment/conditional
         if (PlayerState.state == PlayerState.PlayerStates.Dead && time < 0) {
             time = resettimer;
             StartCoroutine(ResetLevel());
@@ -103,6 +110,7 @@ public class ResetPlayerAfterDeath : MonoBehaviour
     {
         player.position = checkPoint.playerCheckpointPosition;
         mcamera.position = checkPoint.camaraCheckpointPosition;
+        //Try to find a different way to get the references
         if (FindObjectOfType<LerpBetweenTwoPoint>() != null) {
             lerp.distCovered = checkPoint.distCovered;
             lerp.journeyLength = checkPoint.journeyLength;

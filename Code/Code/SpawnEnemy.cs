@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+//use a namespace
 public class SpawnEnemy : MonoBehaviour
 {
+    //Good use of comments
     [Header("EnemySpawner")]
     [SerializeField]
     private List<EnemySpawnerSO> EnemySpawnerSoList; // Keep This code need for Final, This List is Connected with EnemySpawnBoundry
@@ -49,6 +51,7 @@ public class SpawnEnemy : MonoBehaviour
 
             if (spawnNewEnemy == true) {
 
+                //Do you need the absolute value of a positive number? I think you can remove `Mathf.Abs`
                 randEnemy = Mathf.Abs(Random.Range(0, enemySpawnerSO.enemy.Count));
                 SpawnEnemies(enemySpawnerSO.enemy[randEnemy]);
             }
@@ -69,7 +72,7 @@ public class SpawnEnemy : MonoBehaviour
     //Check if the camera is in enemy spawn boundry
     private void FixedUpdate()
     {
-
+        //This doesn't need to be in FixedUpdate
         if (PlayerState.state == PlayerState.PlayerStates.Dead) {
 
             spawnBoundryListValue = perivousSboundryListValue;
@@ -86,6 +89,7 @@ public class SpawnEnemy : MonoBehaviour
         num = ChangeSameSpawnLocation();
         y = enemySpawnerSO.SpawnLoc[num].y;
 
+        //You are instantiating a rigid body? if the goal is to instantiate the gameobject then you don't need the rigidbody for that
         Instantiate(enemyrb, new Vector3(transform.position.x, y, enemySpawnerSO.SpawnLoc[0].z), Quaternion.Euler(0f, 0f, 0f));
 
         spawnTimer = spawnResetTimer;
@@ -103,6 +107,17 @@ public class SpawnEnemy : MonoBehaviour
 
         previousnum = randomnum;
         return randomnum;  
+    }
+    //Okay the one thing I haven't seen you do which you should do more is to bake comments into your functions.
+
+    //You do that by hitting the slash thre times above a function which adds automatic code ->  ///
+
+    /// <summary>
+    /// This is a baked in comment. When hovering over this method, you will now read this
+    /// </summary>
+    /// <param name="x">Doesn't matter</param>
+    public void ExampleMethod(int x) { 
+        
     }
 
     //Initializing the enemySpawerSO
