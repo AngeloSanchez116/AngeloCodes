@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+//use a namespace
 public class Code : MonoBehaviour
 {
 
@@ -14,6 +15,8 @@ public class Code : MonoBehaviour
     public double fValue2 = 1.6f;
 
     public int[] valueList = {1,2,3,4,5,6};
+    //Just as a tip, you don't need to type this all out
+    List<float> exampleList = new();
     public List<float> valueList2 = new List<float>();
 
     [SerializeField]
@@ -29,6 +32,10 @@ public class Code : MonoBehaviour
         value = 10;
         name = "Code";
 
+        //No need for a Get component call. Your transform is hard coded to the GameObject that MonoBehaviour is on
+        //example
+        gameobjectTransform = transform;
+        //or you could just use `transform` and fully replace this
         gameobjectTransform = GetComponent<Transform>(); 
     }
 
@@ -52,6 +59,18 @@ public class Code : MonoBehaviour
             }
         }
 
+        //don't ever do this
+        //DO NOT EVER DO THIS
+        //while loops and do while loops will crash your application if done in Update
+        /*
+        So lets talk about what happens under the hood. This class inherits from MonoBehaviour, which is another class.
+        MonoBehaviour will call the Update() function once every frame. This is done sequentially so the next Update function 
+        is not called until the first one ends. This means if you use a while loop, you can create an infinte loop, also called
+        a "while true" loop. This will cause the entire application to freeze and can lead to a crash. If you absolutely needed
+        a while or do while loop, then you would do this in a coroutine because they have the ability to wait and restart so
+        the fames can continue.
+
+        */
         while (value < hiddenvalue) { 
         
             //keeps looping unto value is greater than hiddenvalue;
